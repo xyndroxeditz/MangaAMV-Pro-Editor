@@ -1,0 +1,91 @@
+.video-uploader {
+  padding: 20px;
+}
+
+.video-uploader h3 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.drop-zone {
+  border: 3px dashed rgba(102, 126, 234, 0.5);
+  border-radius: 15px;
+  padding: 60px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.drop-zone:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.drop-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.drop-text {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.drop-subtext {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.uploaded-clips {
+  margin-top: 30px;
+}
+
+.uploaded-clips h4 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.clip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.clip-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clip-card:hover {
+  transform: translateY(-5px);
+}
+
+.clip-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.clip-info {
+  padding: 10px;
+}
+
+.clip-name {
+  color: #fff;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+
+.clip-duration {
+  color: #667eea;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
