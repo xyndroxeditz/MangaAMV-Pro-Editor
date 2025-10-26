@@ -1,54 +1,41 @@
 .timeline-container {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  background: var(--bg-secondary);
 }
 
-.timeline-toolbar {
+.timeline-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(15, 23, 42, 0.8);
 }
 
-.zoom-controls {
+.timeline-zoom-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--spacing-sm);
 }
 
-.zoom-controls button {
-  background: rgba(102, 126, 234, 0.2);
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-}
-
-.zoom-controls button:hover {
-  background: rgba(102, 126, 234, 0.4);
-}
-
-.zoom-controls span {
-  color: #fff;
-  font-size: 0.9rem;
-  min-width: 50px;
+.zoom-level {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 40px;
   text-align: center;
+  font-weight: 600;
 }
 
-.timeline-info {
+.timeline-actions {
   display: flex;
-  gap: 20px;
-  color: #888;
-  font-size: 0.85rem;
+  gap: var(--spacing-sm);
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
 }
 
 .timeline-scroll {
@@ -56,169 +43,246 @@
   overflow-x: auto;
   overflow-y: auto;
   position: relative;
+  cursor: crosshair;
 }
 
-.timeline-content {
-  position: relative;
-  min-height: 300px;
-  padding-top: 30px;
-}
-
-.time-markers {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.time-ruler {
   height: 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(30, 41, 59, 0.5);
 }
 
 .time-marker {
   position: absolute;
   top: 0;
-  color: #888;
-  font-size: 0.75rem;
-  padding: 5px;
+  height: 100%;
+  border-left: 1px solid var(--border-color);
+  padding-left: 4px;
 }
 
-.track {
-  position: relative;
+.time-label {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-track {
   height: 80px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
 }
 
-.track-label {
-  position: sticky;
-  left: 0;
-  width: 100px;
-  background: rgba(0, 0, 0, 0.95);
+.track-header {
+  width: 80px;
+  min-width: 80px;
+  background: rgba(15, 23, 42, 0.9);
+  border-right: 1px solid var(--border-color);
   display: flex;
   align-items: center;
-  padding: 0 15px;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: bold;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: sticky;
+  left: 0;
   z-index: 10;
 }
 
-.track-clips {
+.track-content {
   flex: 1;
   position: relative;
-  height: 100%;
+  background: rgba(30, 41, 59, 0.3);
 }
 
-.clip {
+.timeline-clip {
   position: absolute;
-  height: 60px;
   top: 10px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 5px;
-  border: 2px solid transparent;
+  height: 60px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
   cursor: move;
+  transition: all var(--transition-fast);
   overflow: hidden;
-  transition: all 0.2s;
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
-.clip:hover {
+.timeline-clip:hover {
+  border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  z-index: 5;
 }
 
-.clip.selected {
-  border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+.timeline-clip.selected {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  z-index: 6;
 }
 
-.clip-thumbnail {
-  position: absolute;
+.timeline-clip.dragging {
+  opacity: 0.7;
+  z-index: 100;
+}
+
+.clip-thumbnail-mini {
+  width: 60px;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.clip-thumbnail-mini img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
 }
 
-.clip-label {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
-  color: #fff;
-  font-size: 0.75rem;
+.clip-info-mini {
+  flex: 1;
+  padding: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.clip-name-mini {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  z-index: 2;
+}
+
+.clip-duration-mini {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.clip-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.timeline-clip:hover .clip-handle {
+  opacity: 1;
+}
+
+.clip-handle-left {
+  left: 0;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.clip-handle-right {
+  right: 0;
+  background: linear-gradient(270deg, var(--primary), transparent);
 }
 
 .audio-clip {
-  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(236, 72, 153, 0.1));
+  border-color: rgba(236, 72, 153, 0.5);
 }
 
-.waveform {
-  width: 100%;
-  height: 100%;
+.audio-clip:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+.audio-waveform {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.3) 0px,
-    rgba(255, 255, 255, 0.3) 2px,
+    rgba(236, 72, 153, 0.3) 0px,
+    rgba(236, 72, 153, 0.3) 2px,
     transparent 2px,
-    transparent 6px
+    transparent 8px
   );
 }
 
 .text-clip {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(20, 184, 166, 0.1));
+  border-color: rgba(20, 184, 166, 0.5);
 }
 
-.playhead {
+.text-clip:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+.timeline-playhead {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 2px;
   pointer-events: none;
-  z-index: 100;
-}
-
-.playhead-line {
-  width: 2px;
-  height: 100%;
-  background: #ff2d95;
-  box-shadow: 0 0 10px rgba(255, 45, 149, 0.8);
+  z-index: 50;
+  transform: translateX(-1px);
 }
 
 .playhead-handle {
   position: absolute;
   top: 0;
-  left: -6px;
-  width: 14px;
-  height: 14px;
-  background: #ff2d95;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--primary);
+  border: 2px solid white;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 45, 149, 0.8);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+  cursor: pointer;
+  pointer-events: all;
 }
 
+.playhead-line {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 2px;
+  height: calc(100% - 16px);
+  background: linear-gradient(180deg, var(--primary), rgba(99, 102, 241, 0.3));
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+}
+
+.timeline-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-tertiary);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .timeline-toolbar {
-    padding: 8px 10px;
+  .track-header {
+    width: 60px;
+    min-width: 60px;
+    font-size: 0.65rem;
   }
   
-  .track-label {
-    width: 70px;
-    font-size: 0.75rem;
-    padding: 0 8px;
-  }
-  
-  .clip {
+  .timeline-clip {
     height: 50px;
   }
   
-  .clip-label {
-    font-size: 0.65rem;
+  .clip-thumbnail-mini {
+    width: 50px;
   }
 }

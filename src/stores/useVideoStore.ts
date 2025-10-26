@@ -116,6 +116,7 @@ interface VideoStore {
   updateClip: (id: string, updates: Partial<VideoClip>) => void
   trimClip: (id: string, start: number, end: number) => void
   splitClip: (id: string, time: number) => void
+  setSelectedClip: (id: string | null) => void
   
   // Filter actions
   applyFilter: (clipId: string, filters: Partial<VideoFilters>) => void
@@ -324,6 +325,10 @@ export const useVideoStore = create<VideoStore>((set, get) => ({
         clips: [...state.currentProject.clips, newClip]
       } : null
     }))
+  },
+  
+  setSelectedClip: (id: string | null) => {
+    set({ selectedClipId: id })
   },
   
   // Filters and effects
