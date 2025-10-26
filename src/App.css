@@ -1,0 +1,135 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.screen {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: #a0a0a0;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.card p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bottom-nav button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 5px 15px;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.bottom-nav button .icon {
+  font-size: 1.5rem;
+  margin-bottom: 3px;
+  transition: transform 0.3s ease;
+}
+
+.bottom-nav button .label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.bottom-nav button.active {
+  color: #667eea;
+}
+
+.bottom-nav button.active .icon {
+  transform: scale(1.2);
+}
+
+.bottom-nav button:hover {
+  color: #667eea;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .bottom-nav button {
+    padding: 5px 10px;
+    min-width: 50px;
+  }
+  
+  .bottom-nav button .icon {
+    font-size: 1.3rem;
+  }
+  
+  .bottom-nav button .label {
+    font-size: 0.7rem;
+  }
+}

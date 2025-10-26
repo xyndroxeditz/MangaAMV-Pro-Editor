@@ -1,0 +1,30 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Hello World</Text>
+      <Text style={styles.subtext}>MangaAMV Pro Editor</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: '#FF2D95',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  subtext: {
+    color: '#FFF',
+    fontSize: 16,
+    marginTop: 10,
+  },
+});

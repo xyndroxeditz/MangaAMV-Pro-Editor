@@ -1,0 +1,38 @@
+{
+  "name": "mangaamv-pro-editor",
+  "version": "3.0.0",
+  "type": "module",
+  "description": "Professional Video Editor for Manga & AMV - Full-featured video editing in the browser",
+  "author": "MangaAMV Pro Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && vercel --prod"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^5.0.8",
+    "fast-xml-parser": "^4.5.0",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
+    "fabric": "^6.0.2",
+    "wavesurfer.js": "^7.8.12",
+    "gif.js": "^0.2.0",
+    "file-saver": "^2.0.5",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.5",
+    "@types/file-saver": "^2.0.7",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.7",
+    "vite-plugin-pwa": "^0.21.1"
+  },
+  "private": false
+}
