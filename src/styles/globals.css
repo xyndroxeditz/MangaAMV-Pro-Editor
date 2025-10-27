@@ -1,38 +1,49 @@
 :root {
-  /* Premium Color Palette */
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --secondary: #ec4899;
-  --secondary-dark: #db2777;
-  --accent: #14b8a6;
+  /* MangaAMV Hot Pink Theme - Premium Color Palette */
+  --primary: #FF2D95; /* HOT PINK - Main brand color */
+  --primary-dark: #E6007A;
+  --primary-light: #FF66B3;
+  --secondary: #FF1493;
+  --secondary-dark: #C71585;
+  --accent: #FFB3D9;
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
   
+  /* Manga/AMV Specific Colors */
+  --manga-black: #000000;
+  --manga-white: #FFFFFF;
+  --ink-splash: #1a1a1a;
+  --neon-cyan: #00FFFF;
+  --neon-purple: #9D00FF;
+  
   /* Backgrounds - Dark Mode */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-glass: rgba(30, 41, 59, 0.7);
-  --bg-glass-hover: rgba(51, 65, 85, 0.8);
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-glass: rgba(26, 26, 26, 0.7);
+  --bg-glass-hover: rgba(42, 42, 42, 0.8);
+  --bg-hot-pink-glass: rgba(255, 45, 149, 0.1);
   
   /* Text Colors */
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --text-tertiary: #B0B0B0;
+  --text-muted: #808080;
+  --text-hot-pink: #FF2D95;
   
   /* Borders */
-  --border-color: rgba(148, 163, 184, 0.1);
-  --border-color-hover: rgba(148, 163, 184, 0.2);
+  --border-color: rgba(255, 45, 149, 0.2);
+  --border-color-hover: rgba(255, 45, 149, 0.4);
+  --border-hot-pink: #FF2D95;
   
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 40px rgba(255, 45, 149, 0.5);
+  --shadow-glow-intense: 0 0 60px rgba(255, 45, 149, 0.8);
   
   /* Spacing */
   --spacing-xs: 0.25rem;

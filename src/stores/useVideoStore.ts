@@ -1,4 +1,8 @@
 import { create } from 'zustand'
+import { EffectDefinition, EffectCategory } from '../lib/effectsLibrary'
+import { XMLProject } from '../lib/xmlImportExport'
+import { Model3D } from '../lib/threeDEngine'
+import { AudioReactiveParams } from '../lib/beatDetector'
 
 export interface VideoClip {
   id: string
@@ -15,6 +19,12 @@ export interface VideoClip {
   filters: VideoFilters
   effects: VideoEffect[]
   position: { x: number; y: number; scale: number; rotation: number }
+  // New properties for advanced features
+  track: number
+  locked: boolean
+  keyframes: Keyframe[]
+  blendMode: string
+  audioReactive?: AudioReactiveParams
 }
 
 export interface VideoFilters {
@@ -28,11 +38,23 @@ export interface VideoFilters {
 
 export interface VideoEffect {
   id: string
-  type: 'transition' | 'filter' | 'animation'
+  type: 'transition' | 'filter' | 'animation' | 'manga' | '3d' | 'glitch' | 'text' | 'speed'
   name: string
+  displayName: string
+  category: EffectCategory
   startTime: number
   duration: number
   params: Record<string, any>
+  enabled: boolean
+  bpmSync: boolean
+  intensity: number
+}
+
+export interface Keyframe {
+  time: number
+  property: string
+  value: any
+  easing: 'linear' | 'easeIn' | 'easeOut' | 'easeInOut' | 'bounce'
 }
 
 export interface TextOverlay {
@@ -257,7 +279,11 @@ export const useVideoStore = create<VideoStore>((set, get) => ({
         grayscale: 0
       },
       effects: [],
-      position: { x: 0, y: 0, scale: 1, rotation: 0 }
+      position: { x: 0, y: 0, scale: 1, rotation: 0 },
+      track: 0,
+      locked: false,
+      keyframes: [],
+      blendMode: 'normal'
     }
     
     set(state => ({
