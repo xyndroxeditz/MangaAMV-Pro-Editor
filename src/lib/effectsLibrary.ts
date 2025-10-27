@@ -13,7 +13,12 @@ export enum EffectCategory {
   COLOR = 'color',
   PARTICLE = 'particle',
   CAMERA = 'camera',
-  DISTORTION = 'distortion'
+  DISTORTION = 'distortion',
+  BLUR = 'blur',
+  LIGHT = 'light',
+  SHAPE = 'shape',
+  FRACTAL = 'fractal',
+  PHYSICS = 'physics'
 }
 
 export interface EffectDefinition {

@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { effectLibrary, EffectDefinition, EffectCategory } from '../lib/effectsLibrary';
+import { effectLibrary, EffectDefinition, EffectCategory } from '../../lib/effectsLibrary';
 import './PresetLibrary.css';
 
 export interface CommunityPreset {

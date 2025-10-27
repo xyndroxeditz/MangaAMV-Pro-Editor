@@ -437,7 +437,7 @@ export class AssetLibraryManager {
     console.log(`Downloading asset ${assetId}`);
     
     // Simulate download
-    return new Blob(['asset data'], { type: 'application/zip', lastModified: Date.now() });
+    return new Blob(['asset data'], { type: 'application/zip' });
   }
 
   /**

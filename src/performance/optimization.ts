@@ -111,8 +111,8 @@ export class MemoryManager {
   private freeMemory(needed: number): void {
     console.log(`Freeing memory: need ${needed}MB`);
     // Clear caches, dispose unused resources
-    if (typeof global.gc === 'function') {
-      global.gc();
+    if (typeof (globalThis as any).gc === 'function') {
+      (globalThis as any).gc();
     }
   }
 

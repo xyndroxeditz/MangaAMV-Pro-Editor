@@ -39,8 +39,8 @@ export class AdvancedAudioAnalyzer {
   private audioContext: AudioContext | null = null;
   private analyser: AnalyserNode | null = null;
   private source: MediaElementAudioSourceNode | null = null;
-  private dataArray: Uint8Array | null = null;
-  private frequencyData: Float32Array | null = null;
+  private dataArray: Uint8Array = new Uint8Array(0);
+  private frequencyData: Float32Array = new Float32Array(0);
   private sampleRate: number = 44100;
   
   // Advanced analysis
@@ -78,10 +78,11 @@ export class AdvancedAudioAnalyzer {
    * Get frequency bands analysis
    */
   getFrequencyBands(): FrequencyBands {
-    if (!this.analyser || !this.dataArray) {
+    if (!this.analyser || this.dataArray.length === 0) {
       return this.getEmptyBands();
     }
 
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getByteFrequencyData(this.dataArray);
 
     return {
@@ -99,11 +100,13 @@ export class AdvancedAudioAnalyzer {
    * Get audio features
    */
   getAudioFeatures(): AudioFeatures {
-    if (!this.analyser || !this.dataArray || !this.frequencyData) {
+    if (!this.analyser || this.dataArray.length === 0 || this.frequencyData.length === 0) {
       return this.getEmptyFeatures();
     }
 
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getByteFrequencyData(this.dataArray);
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getFloatFrequencyData(this.frequencyData);
 
     const rms = this.calculateRMS();
@@ -256,10 +259,11 @@ export class AdvancedAudioAnalyzer {
    * Get spectrum data for visualization
    */
   getSpectrumData(): Uint8Array {
-    if (!this.analyser || !this.dataArray) {
+    if (!this.analyser || this.dataArray.length === 0) {
       return new Uint8Array(0);
     }
 
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getByteFrequencyData(this.dataArray);
     return this.dataArray;
   }

@@ -166,20 +166,9 @@ export class ThreeDEngine {
       material = new THREE.MeshStandardMaterial({ color: 0xffffff })
     } = options;
 
-    // Create text geometry
-    const loader = new THREE.FontLoader();
-    const shapes = loader.parse(JSON.stringify({
-      /* Font data would go here */
-    }));
-
-    const geometry = new THREE.ExtrudeGeometry(shapes as any, {
-      depth,
-      bevelEnabled: true,
-      bevelThickness: bevel,
-      bevelSize: bevel,
-      bevelSegments: 5
-    });
-
+    // Create text geometry - FontLoader requires three/examples/jsm/loaders/FontLoader
+    // For now, create a simple placeholder mesh
+    const geometry = new THREE.BoxGeometry(text.length * 0.5, 1, depth);
     const mesh = new THREE.Mesh(geometry, material);
     mesh.castShadow = true;
     this.scene.add(mesh);

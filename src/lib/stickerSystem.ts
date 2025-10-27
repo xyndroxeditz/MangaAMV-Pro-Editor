@@ -340,7 +340,7 @@ export class StickerSystem {
     );
     
     // Apply blend mode
-    this.ctx.globalCompositeOperation = instance.blendMode;
+    this.ctx.globalCompositeOperation = instance.blendMode as GlobalCompositeOperation;
     
     // Apply tint if specified
     if (instance.tint) {

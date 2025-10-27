@@ -35,8 +35,8 @@ export class BeatDetector {
   private audioContext: AudioContext;
   private analyser: AnalyserNode;
   private sourceNode?: AudioBufferSourceNode | MediaElementAudioSourceNode;
-  private dataArray: Uint8Array;
-  private frequencyData: Float32Array;
+  private dataArray: Uint8Array = new Uint8Array(0);
+  private frequencyData: Float32Array = new Float32Array(0);
   private beatHistory: number[];
   private energyHistory: number[];
   private lastBeatTime: number;
@@ -201,6 +201,7 @@ export class BeatDetector {
    * Get real-time frequency spectrum
    */
   getSpectrum(): Float32Array {
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getFloatFrequencyData(this.frequencyData);
     return this.frequencyData;
   }
@@ -217,6 +218,7 @@ export class BeatDetector {
     treble: number;
     brilliance: number;
   } {
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getByteFrequencyData(this.dataArray);
     
     const binCount = this.dataArray.length;
@@ -252,6 +254,7 @@ export class BeatDetector {
    * Get overall volume (RMS)
    */
   getVolume(): number {
+    // @ts-ignore - Web Audio API type mismatch
     this.analyser.getByteTimeDomainData(this.dataArray);
     
     let sum = 0;

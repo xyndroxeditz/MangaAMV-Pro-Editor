@@ -197,8 +197,7 @@ export class MediaEncoder {
     // In production, use FFmpeg.js or native encoder
     // This is a placeholder
     const videoBlob = new Blob(['encoded video data'], {
-      type: `video/${options.format}`,
-      lastModified: Date.now(),
+      type: `video/${options.format}`
     });
 
     return videoBlob;
@@ -211,7 +210,7 @@ export class MediaEncoder {
     console.log(`Creating GIF from ${frames.length} frames at ${fps} fps`);
 
     // Use gif.js or similar library
-    return new Blob(['gif data'], { type: 'image/gif', lastModified: Date.now() });
+    return new Blob(['gif data'], { type: 'image/gif' });
   }
 
   /**
